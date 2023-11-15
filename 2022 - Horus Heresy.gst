@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSystem id="28d4-bd2e-4858-ece6" name="(HH V2) Horus Heresy (2022)" revision="86" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema" type="gameSystem">
+<gameSystem id="28d4-bd2e-4858-ece6" name="(HH V2) Horus Heresy (2022)" revision="88" battleScribeVersion="2.03" xmlns="http://www.battlescribe.net/schema/gameSystemSchema" type="gameSystem">
   <publications>
     <publication name="GitHub" hidden="false" id="e2a4-ac85-1bef-22f5" publisherUrl="https://github.com/BSData/horus-heresy"/>
     <publication id="e77a-823a-da94-16b9" name="Warhammer: The Horus Heresy - Age of Darkness Rulebook" shortName="Main Rules" publicationDate="June 2022"/>
@@ -1305,6 +1305,13 @@ Reactions:
       </constraints>
     </categoryEntry>
     <categoryEntry id="d684-5b63-caa7-adc4" name="Legiones Hereticus" hidden="false"/>
+    <categoryEntry name="Daemons of the Ruinstorm Allies Restrictions" hidden="false" id="a849-ed72-923d-c4c7">
+      <rules>
+        <rule name="The Ruinstorm Daemon List and the Allies in the Age of Darkness Table" hidden="false" id="799e-13a6-b77c-8e54" publicationId="8775-88f5-cfdd-24f6" page="2">
+          <description>An army that includes a Primary Detachment drawn from the Ruinstorm Daemons Army List cannot include any Optional Detachments except for Lords of War Detachments drawn from the Ruinstorm Daemons Army List. An army that includes a Primary Detachment that does not use the Ruinstorm Daemons Army List cannot include an optional Detachment (including Allied or Lords of War Detachments) drawn from the Ruinstorm Daemons Army List.</description>
+        </rule>
+      </rules>
+    </categoryEntry>
   </categoryEntries>
   <forceEntries>
     <forceEntry id="d926-652f-8436-30ce" name="Crusade Force Organisation Chart" hidden="false">
@@ -1835,6 +1842,30 @@ Reactions:
         <categoryLink id="e7a0-a7e0-e7b8-8578" name="Ogryn Conscripts (Compulsory)" hidden="false" targetId="d813-b3e9-24f0-78bd" primary="false">
           <constraints>
             <constraint field="selections" scope="force" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="2433-a1e3-9cc3-c1cb" type="max"/>
+          </constraints>
+        </categoryLink>
+        <categoryLink id="42b2-d3e7-aac9-1859" name="Daemons of the Ruinstorm Allies Restrictions" hidden="false" targetId="a849-ed72-923d-c4c7" primary="false" type="category">
+          <modifiers>
+            <modifier type="set" value="0" field="ba15-563-9cd3-872d">
+              <conditions>
+                <condition type="equalTo" value="0" field="selections" scope="roster" childId="afca-3047-fb26-d097" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="0" field="5a1-3fa3-3745-1d6a">
+              <conditions>
+                <condition type="equalTo" value="0" field="selections" scope="roster" childId="afca-3047-fb26-d097" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+            <modifier type="set" value="0" field="66d8-7abd-c8c9-a51b">
+              <conditions>
+                <condition type="equalTo" value="0" field="selections" scope="roster" childId="afca-3047-fb26-d097" shared="true" includeChildSelections="true"/>
+              </conditions>
+            </modifier>
+          </modifiers>
+          <constraints>
+            <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="5a1-3fa3-3745-1d6a" type="min"/>
+            <constraint field="selections" scope="parent" value="1" percentValue="false" shared="true" includeChildSelections="false" includeChildForces="false" id="66d8-7abd-c8c9-a51b" type="max"/>
+            <constraint field="selections" scope="roster" value="1" percentValue="false" shared="true" includeChildSelections="true" includeChildForces="false" id="ba15-563-9cd3-872d" type="max"/>
           </constraints>
         </categoryLink>
       </categoryLinks>
@@ -2577,6 +2608,27 @@ THIS IS A TEMPORARY NOTIFICATION THAT WILL BE REMOVED IN A FEW MONTHS WHEN HOPEF
       </modifiers>
       <categoryLinks>
         <categoryLink id="eec3-bfaa-9984-36f1" name="New CategoryLink" hidden="false" targetId="a24f-12d8-36c1-f477" primary="true"/>
+      </categoryLinks>
+    </entryLink>
+    <entryLink import="true" name="Daemons of the Ruinstorm Allies Restrictions" hidden="false" type="selectionEntry" id="41bb-4dce-4cc1-84db" targetId="9259-4c64-3ea5-9e63" defaultAmount="0">
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="equalTo" value="0" field="selections" scope="roster" childId="afca-3047-fb26-d097" shared="true" includeChildSelections="true" includeChildForces="false"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="0" field="5dde-3ba5-af88-5677">
+          <conditions>
+            <condition type="equalTo" value="0" field="selections" scope="roster" childId="afca-3047-fb26-d097" shared="true" includeChildForces="false" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <constraints>
+        <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5dde-3ba5-af88-5677" includeChildSelections="true"/>
+        <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="9f29-6332-f90f-4124" includeChildSelections="true"/>
+      </constraints>
+      <categoryLinks>
+        <categoryLink targetId="a849-ed72-923d-c4c7" id="fbac-e989-409c-541e" primary="true" name="Daemons of the Ruinstorm Allies Restrictions"/>
       </categoryLinks>
     </entryLink>
   </entryLinks>
@@ -10513,6 +10565,11 @@ Once all models in the unit have moved onto the battlefield, the Warp Rift marke
       <costs>
         <cost name="Pts" typeId="d2ee-04cb-5f8a-2642" value="0"/>
       </costs>
+    </selectionEntry>
+    <selectionEntry type="upgrade" import="true" name="Daemons of the Ruinstorm Allies Restrictions" hidden="false" id="9259-4c64-3ea5-9e63" publicationId="8775-88f5-cfdd-24f6" page="2">
+      <infoLinks>
+        <infoLink name="The Ruinstorm Daemon List and the Allies in the Age of Darkness Table" hidden="false" type="rule" id="dc1f-cab4-b56f-44d6" targetId="799e-13a6-b77c-8e54"/>
+      </infoLinks>
     </selectionEntry>
   </sharedSelectionEntries>
   <sharedSelectionEntryGroups>
